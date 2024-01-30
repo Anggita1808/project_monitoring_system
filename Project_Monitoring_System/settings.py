@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'p_monitoring_system',
+    'rest_framework',
+    'django_excel',
 ]
 
 MIDDLEWARE = [

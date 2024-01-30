@@ -1,0 +1,70 @@
+<!-- api_app/templates/client_list.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Client List</title>
+</head>
+<body>
+
+<h1>Client List</h1>
+
+<form method="GET" action="{% url 'client-list-html' %}">
+    <label for="search">Search:</label>
+    <input type="text" name="search" id="search" value="{{ request.GET.search }}">
+    <button type="submit">Search</button>
+</form>
+
+<a href="{% url 'client-export' %}" class="btn btn-success">Export to Excel</a>
+
+<form method="GET" action="{% url 'client-list-html' %}">
+    <button type="submit" name="order_by" value="name">Sort Ascending</button>
+
+    <button type="submit" name="order_by" value="-name">Sort Descending</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th><a href="?order_by=name">Name</a></th>
+        <th>Address</th>
+        <th>PIC Phone</th>
+        <th>PIC Email</th>
+        <th>PIC Title</th>
+        <th>Industry</th>
+        <th>Website URL</th>
+        <th>Logo</th>
+        <th>Company Size</th>
+        <th>Company Address</th>
+        <th>Contact Person Name</th>
+        <th>Company Email</th>
+        <th>Company Phone</th>
+        <th>Additional Info</th>
+        <th>Date Joined</th>
+        <th>Status</th>
+        <th>Last Activity</th>
+    </tr>
+    {% for client in clients %}
+        <tr>
+            <td>{{ client.name }}</td>
+            <td>{{ client.address }}</td>
+            <td>{{ client.pic_phone }}</td>
+            <td>{{ client.pic_email }}</td>
+            <td>{{ client.pic_title }}</td>
+            <td>{{ client.industry }}</td>
+            <td>{{ client.website_url }}</td>
+            <td>{{ client.logo }}</td>
+            <td>{{ client.company_size }}</td>
+            <td>{{ client.company_address }}</td>
+            <td>{{ client.contact_person_name }}</td>
+            <td>{{ client.company_email }}</td>
+            <td>{{ client.company_phone }}</td>
+            <td>{{ client.additional_info }}</td>
+            <td>{{ client.date_joined }}</td>
+            <td>{{ client.status }}</td>
+            <td>{{ client.last_activity }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
