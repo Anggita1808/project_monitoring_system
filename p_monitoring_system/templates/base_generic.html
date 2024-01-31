@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}My Project{% endblock %}</title>
+</head>
+<body>
+    <div id="header">
+        <h1>{% block header %}My Project Header{% endblock %}</h1>
+    </div>
+    
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div id="footer">
+        <p>&copy; {% now "Y" %} My Project. All rights reserved.</p>
+    </div>
+</body>
+</html>

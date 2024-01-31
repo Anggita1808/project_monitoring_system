@@ -1,0 +1,9 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>{{ client.name }}</h1>
+  <p>Address: {{ client.address }}</p>
+  <!-- Include other fields as needed -->
+  <a href="{% url 'client_edit' pk=client.pk %}">Edit</a>
+  <a href="{% url 'client_list' %}">Back to list</a>
+{% endblock %}

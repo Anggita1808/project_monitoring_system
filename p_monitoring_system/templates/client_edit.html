@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>{% if client.pk %}Edit{% else %}New{% endif %} Client</h1>
+  <form method="post" class="client-form">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <a href="{% if client.pk %}{% url 'client_detail' pk=client.pk %}{% else %}{% url 'client_list' %}{% endif %}">Cancel</a>
+{% endblock %}

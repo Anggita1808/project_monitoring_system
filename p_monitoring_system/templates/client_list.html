@@ -1,0 +1,11 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h1>Client List</h1>
+  <ul>
+    {% for client in clients %}
+      <li><a href="{% url 'client_detail' pk=client.pk %}">{{ client.name }}</a></li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'client_new' %}">Add new client</a>
+{% endblock %}
