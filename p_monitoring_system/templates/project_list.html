@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project List</title>
+</head>
+<body>
+
+<h1>Project List</h1>
+
+<form method="GET" action="{% url 'project-list-html' %}">
+    <label for="search">Search:</label>
+    <input type="text" name="search" id="search" value="{{ request.GET.search }}">
+    <button type="submit">Search</button>
+</form>
+
+<a href="{% url 'project-export' %}" class="btn btn-success">Export to Excel</a>
+
+<form method="GET" action="{% url 'project-list-html' %}">
+    <button type="submit" name="order_by" value="name">Sort Ascending</button>
+
+    <button type="submit" name="order_by" value="-name">Sort Descending</button>
+</form>
+
+<table border="1">
+    <tr>
+        <th><a href="?order_by=name">Name</a></th>
+        <th>Year</th>
+        <th>PID</th>
+        <th>Description</th>
+        <th>Contract No</th>
+        <th>Contract Date</th>
+        <th>Amount Tax</th>
+        <th>Amount Exc Tax</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Term Of Payment</th>
+        <th>Scope Of Work</th>
+        <th>Out Of Work</th>
+        <th>Detail</th>
+        <th>Remarks</th>
+        <th>Weight</th>
+        <th>Priority</th>
+        <th>Type</th>
+        <th>Market Segment</th>
+        <th>Tech Use</th>
+        <th>Resiko</th>
+        <th>Completion Percentage</th>
+        <!-- <th>AM ID</th>
+        <th>Customer ID</th>
+        <th>End User ID</th>
+        <th>PIC ID</th>
+        <th>PM ID</th>
+        <th>Sales ID</th>
+        <th>Status ID</th> -->
+    </tr>
+    {% for project in project %}
+        <tr>
+            <td>{{ project.name }}</td>
+            <td>{{ project.year }}</td>
+            <td>{{ project.pid }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.contract_no }}</td>
+            <td>{{ project.contract_date }}</td>
+            <td>{{ project.amount_tax }}</td>
+            <td>{{ project.amount_exc_tax }}</td>
+            <td>{{ project.start_date }}</td>
+            <td>{{ project.end_date }}</td>
+            <td>{{ project.top }}</td>
+            <td>{{ project.sow }}</td>
+            <td>{{ project.oos }}</td>
+            <td>{{ project.detail }}</td>
+            <td>{{ project.remarks }}</td>
+            <td>{{ project.weight }}</td>
+            <td>{{ project.priority }}</td>
+            <td>{{ project.type }}</td>
+            <td>{{ project.market_segment }}</td>
+            <td>{{ project.tech_use }}</td>
+            <td>{{ project.resiko }}</td>
+            <td>{{ project.completion_percentage }}</td>
+            <!-- <td>{{ project.am_id }}</td>
+            <td>{{ project.costumer_id }}</td>
+            <td>{{ project.end_user_id }}</td>
+            <td>{{ project.pic_id }}</td>
+            <td>{{ project.pm_id }}</td>
+            <td>{{ project.sales_id }}</td>
+            <td>{{ project.status_id }}</td> -->
+        </tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>
